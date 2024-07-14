@@ -30,11 +30,6 @@ def index():
 
 @app.route('/', methods=['POST'])
 def upload_data():
-    # # POSTリクエストの処理
-    # data = request.get_json()
-    # print(data)  # データを確認するためにコンソールに出力する例
-    # return jsonify({'message': 'Data received successfully!'})
-
     data = request.get_json()
     roll = data['roll']
     pitch = data['pitch']
@@ -46,18 +41,18 @@ def upload_data():
     
     return redirect(url_for('index'))
 
-@app.route('/upload', methods=['POST'])
-def upload():
-    data = request.get_json()
-    roll = data['roll']
-    pitch = data['pitch']
-    yaw = data['yaw']
+# @app.route('/upload', methods=['POST'])
+# def upload():
+#     data = request.get_json()
+#     roll = data['roll']
+#     pitch = data['pitch']
+#     yaw = data['yaw']
     
-    new_data = CarData(roll=roll, pitch=pitch, yaw=yaw)
-    db.session.add(new_data)
-    db.session.commit()
+#     new_data = CarData(roll=roll, pitch=pitch, yaw=yaw)
+#     db.session.add(new_data)
+#     db.session.commit()
     
-    return redirect(url_for('index'))
+#     return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
