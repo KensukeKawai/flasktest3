@@ -8,7 +8,7 @@ app = Flask(__name__)
 # データベース設定
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'mysql+pymysql://user:password@db:3306/myflaskapp')
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
 # データベースモデルの定義
 class CarData(db.Model):
