@@ -1,14 +1,16 @@
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 import os
+
+# SQLiteデータベースファイルのパス
+db_path = os.path.join(os.path.dirname(__file__), 'app.db')
 
 app = Flask(__name__)
 
-# データベース設定
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'mysql+pymysql://user:password@db:3306/myflaskapp')
+# SQLiteデータベースの設定
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-# migrate = Migrate(app, db)
 
 # データベースモデルの定義
 class CarData(db.Model):
