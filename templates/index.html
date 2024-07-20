@@ -14,6 +14,7 @@
       <th>Pitch</th>
       <th>Yaw</th>
     </tr>
+    {% comment %} ↓Jinja2テンプレートエンジンに準拠した変数の埋め込み {% endcomment %}
     {% for entry in data %}
     <tr>
       <td>{{ entry.id }}</td>

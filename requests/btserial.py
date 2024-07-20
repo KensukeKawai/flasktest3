@@ -26,6 +26,7 @@ btser = serial.Serial(port=COMPORT, baudrate=BAUDRATE, bytesize=8, stopbits=seri
 
 def btserial():
     get_data = []
+    btser.write(b'A')
     for i in range(12):
         rdata = btser.readline()
         get_str = rdata[0:len(rdata)-2].decode()
